@@ -68,4 +68,7 @@ class Play extends Phaser.Scene {
             return false;
         }
     }
+    reset() {
+        
+    }
 }
