@@ -1,6 +1,7 @@
 class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
+        this.highScore = 0;
     }
     preload() {
         // load images/tile sprites
@@ -72,6 +73,20 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
             this.gameOver = true;
         }, null, this);
+        
+        let clockConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 100
+        }
+        this.timeLeft = this.add.text(borderUISize + borderPadding * 2, borderUISize + borderPadding * 2, this.clock, clockConfig);
     }
     update() {
         // check key input for restart
