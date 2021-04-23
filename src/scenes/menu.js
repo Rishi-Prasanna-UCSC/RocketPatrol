@@ -20,7 +20,7 @@ class Menu extends Phaser.Scene {
             padding: {
                 top: 5,
                 bottom: 5,
-            },
+            }, 
             fixedWidth: 0
         }
         this.add.text(game.config.width/2,
