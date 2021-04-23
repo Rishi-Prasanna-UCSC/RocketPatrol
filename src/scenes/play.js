@@ -1,4 +1,4 @@
-class Play extends Phaser.Scene {
+/*class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
         this.highScore = 0;
@@ -42,7 +42,7 @@ class Play extends Phaser.Scene {
         // animation config
         this.anims.create({
             key: 'explode',
-            frames: this.anims.generateFrameNumbers('explosion', { start: 0, end: 9, first: 0}),
+            frames: this.anims.generateFrameNumbers('explosion', { start: 3, end: 12, first: 0}),
             frameRate: 30
         }); 
 
@@ -78,14 +78,15 @@ class Play extends Phaser.Scene {
             fixedWidth: 80
         }
 
-        this.timerRight = this.add.text(borderUISize + 2*borderPadding, borderUISize + 2*borderPadding, this.timer, scoreConfig);
-        //this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding, this.p1Score, scoreConfig);
+        this.timerRight = this.add.text(borderUISize + borderPadding, borderUISize + 2*borderPadding, this.timer, timerConfig);
+        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding, this.p1Score, scoreConfig);
 
         // GAME OVER flag
         this.gameOver = false;
 
         // 60-second play clock
         scoreConfig.fixedWidth = 0;
+        timerConfig.fixedWidth = 0;
         this.clock = this.time.delayedCall(60000, () => {
             this.add.text(game.config.width/2, game.config.height/2, 'GAME OVER', scoreConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2 + 64, 'Press (R) to Restart or <- for Menu', scoreConfig).setOrigin(0.5);
