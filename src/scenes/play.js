@@ -1,4 +1,4 @@
-/*class Play extends Phaser.Scene {
+class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
         this.highScore = 0;
