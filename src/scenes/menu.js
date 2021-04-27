@@ -24,31 +24,36 @@ class Menu extends Phaser.Scene {
             fixedWidth: 0
         }
         this.add.text(game.config.width/2,
-            game.config.height/2 - borderUISize - borderPadding,
+            game.config.height/2 - borderUISize - borderPadding - 90,
             'BALLOON PATROL', menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2,
-            game.config.height/2, 'Use <--> arrows to move & (F) to fire',
+            game.config.height/2 - 90, 'Use <--> arrows to move & (F) to fire',
             menuConfig).setOrigin(0.5);
         menuConfig.backgroundColor = '#00FF00';
         menuConfig.color = '#000000';
         this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding,
+            game.config.height/2 + borderUISize + borderPadding - 90,
             'Press <- for Novice or -> for Expert',
             menuConfig).setOrigin(0.5);
         
         menuConfig.backgroundColor = '#0000FF';
         menuConfig.color = '#FFFFFF';
         this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding + 50,
+            game.config.height/2 + borderUISize + borderPadding - 40,
             '1st ship: +10pts',
             menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding + 90,
+            game.config.height/2 + borderUISize + borderPadding,
             '2nd ship: +20pts & +0.5sec',
             menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding + 130,
+            game.config.height/2 + borderUISize + borderPadding + 40,
             '3rd ship: +30pts & +1sec',
+            menuConfig).setOrigin(0.5);
+        
+        this.add.text(game.config.width/2, 
+            game.config.height/2 + borderUISize + borderPadding + 100,
+            'High Score: ' + highScore,
             menuConfig).setOrigin(0.5);
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);

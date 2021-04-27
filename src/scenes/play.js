@@ -82,6 +82,7 @@ class Play extends Phaser.Scene {
 
         this.timerRight = this.add.text(borderUISize + borderPadding + 475, borderUISize + 2*borderPadding, this.timer, timerConfig);
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + 2*borderPadding, this.p1Score, scoreConfig);
+        this.highScoreMiddle = this.add.text(borderUISize + borderPadding + 237.5, borderUISize + 2*borderPadding, highScore, scoreConfig);
 
         // GAME OVER flag
         this.gameOver = false;
@@ -141,6 +142,10 @@ class Play extends Phaser.Scene {
                 this.gameOver = true;
             }, null, this);
         }
+        if (this.p1Score > highScore) {
+            highScore = this.p1Score;
+            this.highScoreMiddle.text = this.p1Score;
+        }
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.scene.start("menuScene");
         }
@@ -180,6 +185,6 @@ class Play extends Phaser.Scene {
         // score add and repaint
         this.p1Score += ship.points;
         this.scoreLeft.text = this.p1Score; 
-        this.sound.play('sfx_explosion');      
+        this.sound.play('sfx_explosion'); 
     }
 }
