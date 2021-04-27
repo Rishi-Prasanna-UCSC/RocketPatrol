@@ -1,11 +1,11 @@
-class Play extends Phaser.Scene {
+/*class Play extends Phaser.Scene {
     constructor() {
         super("playScene");
         this.highScore = 0;
     }
     preload() {
         // load images/tile sprites
-        this.load.image('rocket', '../../assets/rocket.png');
+        this.load.image('rocket', '../../assets/Dart.png');
         this.load.image('balloon', '../../assets/balloon.png');
         this.load.image('bluesky', '../../assets/bluesky.png');
         // load spritesheet
