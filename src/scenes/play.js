@@ -5,11 +5,11 @@ class Play extends Phaser.Scene {
     }
     preload() {
         // load images/tile sprites
-        this.load.image('rocket', '../../assets/Dart.png');
-        this.load.image('balloon', '../../assets/balloon.png');
-        this.load.image('bluesky', '../../assets/bluesky.png');
+        this.load.image('rocket', 'assets/Dart.png');
+        this.load.image('balloon', 'assets/balloon.png');
+        this.load.image('bluesky', 'assets/bluesky.png');
         // load spritesheet
-        this.load.image('pop', '../../assets/balloondam.png');
+        this.load.image('pop', 'assets/balloondam.png');
     }
 
     create() {
