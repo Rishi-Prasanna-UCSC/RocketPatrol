@@ -45,7 +45,7 @@ class Play extends Phaser.Scene {
             key: 'explode',
             //frames: this.anims.generateFrameNumbers('pop', { start: 0, end: 6, first: 0}),
             frameRate: 30
-        }); 
+        });
 
         // initialize score
         this.p1Score = 0;
@@ -109,6 +109,9 @@ class Play extends Phaser.Scene {
             if (this.timerRight.text > 0) {
                 this.timerRight.text = Math.floor(this.timer - ((this.time.now - this.startTime)/1000));
             }
+            else {
+                this.timerRight.text = 0;
+            }
         }
         else {
             this.timerRight.text = 0;
@@ -121,10 +124,12 @@ class Play extends Phaser.Scene {
         if (this.checkCollision(this.p1Rocket, this.ship02)) {
             this.p1Rocket.reset();
             this.shipExplode(this.ship02);
+            this.timer += 0.5;
         }
         if (this.checkCollision(this.p1Rocket, this.ship01)) {
             this.p1Rocket.reset();
             this.shipExplode(this.ship01);
+            this.timer += 1;
         }
         if (this.gameOver && Phaser.Input.Keyboard.JustDown(keyLEFT)) {
             this.scene.start("menuScene");
