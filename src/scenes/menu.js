@@ -35,16 +35,19 @@ class Menu extends Phaser.Scene {
             game.config.height/2 + borderUISize + borderPadding,
             'Press <- for Novice or -> for Expert',
             menuConfig).setOrigin(0.5);
+        
+        menuConfig.backgroundColor = '#0000FF';
+        menuConfig.color = '#FFFFFF';
         this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding + 40,
+            game.config.height/2 + borderUISize + borderPadding + 50,
             '1st ship: +10pts',
             menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding + 80,
+            game.config.height/2 + borderUISize + borderPadding + 90,
             '2nd ship: +20pts & +0.5sec',
             menuConfig).setOrigin(0.5);
         this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding + 120,
+            game.config.height/2 + borderUISize + borderPadding + 130,
             '3rd ship: +30pts & +1sec',
             menuConfig).setOrigin(0.5);
         // define keys
