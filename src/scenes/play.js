@@ -16,16 +16,6 @@ class Play extends Phaser.Scene {
         // place tile sprite
         this.bluesky = this.add.tileSprite(0, 0, 640, 480, 'bluesky').setOrigin(0, 0);
 
-        // green UI background
-        this.add.rectangle(0, borderUISize + borderPadding, game.config.width, borderUISize * 2, 0x0000FF).setOrigin(0, 0);
-
-        // white borders
-        /*
-        this.add.rectangle(0, 0, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, game.config.height - borderUISize, game.config.width, borderUISize, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(0, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
-        this.add.rectangle(game.config.width - borderUISize, 0, borderUISize, game.config.height, 0xFFFFFF).setOrigin(0, 0);
-*/
         // add rocket (p1)
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
 
@@ -49,12 +39,25 @@ class Play extends Phaser.Scene {
 
         // initialize score
         this.p1Score = 0;
+
+        let descConfig = {
+            fontFamily: 'Courier',
+            fontSize: '16px',
+            backgroundColor: '#008f00',
+            color: '#ffffff',
+            align: 'left',
+            padding: {
+                top: 2,
+                bottom: 2,
+            }
+        }
+
         // display score
         let scoreConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            backgroundColor: '#000000',
+            color: '#ffffff',
             align: 'right',
             padding: {
                 top: 5,
@@ -70,8 +73,8 @@ class Play extends Phaser.Scene {
         let timerConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            backgroundColor: '#000000',
+            color: '#ffffff',
             align: 'right',
             padding: {
                 top: 5,
@@ -80,9 +83,15 @@ class Play extends Phaser.Scene {
             fixedWidth: 80
         }
 
-        this.timerRight = this.add.text(borderUISize + borderPadding + 475, borderUISize + 2*borderPadding, this.timer, timerConfig);
-        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + 2*borderPadding, this.p1Score, scoreConfig);
-        this.highScoreMiddle = this.add.text(borderUISize + borderPadding + 237.5, borderUISize + 2*borderPadding, highScore, scoreConfig);
+        
+        this.scoreLeft = this.add.text(50, 50, this.p1Score, scoreConfig);
+        this.scoreLeftDesc = this.add.text(50, 30, 'Score', descConfig);
+
+        this.highScoreMiddle = this.add.text(270, 50, highScore, scoreConfig);
+        this.highScoreDesc = this.add.text(270, 30, 'High Score', descConfig);
+
+        this.timerRight = this.add.text(490, 50, this.timer, timerConfig);
+        this.timerRightDesc = this.add.text(490, 30, 'Time', descConfig);
 
         // GAME OVER flag
         this.gameOver = false; 

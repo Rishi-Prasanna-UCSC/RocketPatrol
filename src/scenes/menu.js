@@ -7,77 +7,57 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx_select', './assets/blip_select12.wav');
         this.load.audio('sfx_explosion', './assets/Pop.mp3');
         this.load.audio('sfx_rocket', './assets/Throw.wav');
+        this.load.image('BG', 'assets/BalloonPatrolScreen.png');
+
+        this.load.image('Easy', 'assets/EasyButton.png');
+        this.load.image('Hard', 'assets/HardButton.png');
+        this.load.image('Instr', 'assets/InstructionsButton.png');
     }
 
     create() {
-        //this.add.text(20, 20, "Rocket Patrol Menu");
-        let menuConfig = {
-            fontFamily: 'Courier',
-            fontSize: '28px',
-            backgroundColor: '#008F00',
-            color: '#FFFFFF',
-            align: 'right',
-            padding: {
-                top: 5,
-                bottom: 5,
-            }, 
-            fixedWidth: 0
-        }
-        this.add.text(game.config.width/2,
-            game.config.height/2 - borderUISize - borderPadding - 90,
-            'BALLOON PATROL', menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2,
-            game.config.height/2 - 90, 'Use <--> arrows to move & (F) to fire',
-            menuConfig).setOrigin(0.5);
-        menuConfig.backgroundColor = '#00FF00';
-        menuConfig.color = '#000000';
-        this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding - 90,
-            'Press <- for Novice or -> for Expert',
-            menuConfig).setOrigin(0.5);
-        
-        menuConfig.backgroundColor = '#0000FF';
-        menuConfig.color = '#FFFFFF';
-        this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding - 40,
-            '1st balloon: +10pts',
-            menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding,
-            '2nd balloon: +20pts & +0.5sec',
-            menuConfig).setOrigin(0.5);
-        this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding + 40,
-            '3rd balloon: +30pts & +1sec',
-            menuConfig).setOrigin(0.5);
-        
-        this.add.text(game.config.width/2, 
-            game.config.height/2 + borderUISize + borderPadding + 100,
-            'High Score: ' + highScore,
-            menuConfig).setOrigin(0.5);
-        // define keys
-        keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
-        keyRIGHT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
-        //this.scene.start("playScene");
+        this.add.image(320, 240, 'BG');
+
+        let e = this.add.image(500, 135, 'Easy');
+        let h = this.add.image(500, 235, 'Hard');
+        let i = this.add.image(500, 335, 'Instr');
+        e.setScale(1.3);
+        h.setScale(1.3);
+        i.setScale(1.3);
+
+        e.setInteractive();
+        h.setInteractive();
+        i.setInteractive();
+
+        e.on('pointerdown', () => {
+            // easy mode
+            game.settings = {
+                spaceshipSpeed: 3,
+                gameTimer: 60000    
+            }
+            this.sound.play('sfx_select');
+            this.scene.start('playScene');   
+        });
+        h.on('pointerdown', () => {
+            // hard mode
+            game.settings = {
+                spaceshipSpeed: 4,
+                gameTimer: 45000    
+            }
+            this.sound.play('sfx_select');
+            this.scene.start('playScene');    
+        });
+        i.on('pointerdown', () => {
+            this.scene.start("instructionsScene");
+        });
     }
     update() {
+        /*
         if (Phaser.Input.Keyboard.JustDown(keyLEFT)) {
-          // easy mode
-          game.settings = {
-            spaceshipSpeed: 3,
-            gameTimer: 60000    
-          }
-          this.sound.play('sfx_select');
-          this.scene.start('playScene');    
+           
         }
         if (Phaser.Input.Keyboard.JustDown(keyRIGHT)) {
-          // hard mode
-          game.settings = {
-            spaceshipSpeed: 4,
-            gameTimer: 45000    
-          }
-          this.sound.play('sfx_select');
-          this.scene.start('playScene');    
+          
         }
+        */
     }
 }
