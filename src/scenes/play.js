@@ -54,7 +54,7 @@ class Play extends Phaser.Scene {
 
         // display score
         let scoreConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'Laca',
             fontSize: '28px',
             backgroundColor: '#000000',
             color: '#ffffff',
@@ -71,7 +71,7 @@ class Play extends Phaser.Scene {
         this.timer = 60;
         // display timer
         let timerConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'Laca',
             fontSize: '28px',
             backgroundColor: '#000000',
             color: '#ffffff',
