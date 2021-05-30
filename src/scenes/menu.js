@@ -9,6 +9,9 @@ class Menu extends Phaser.Scene {
         this.load.audio('sfx_rocket', './assets/Throw.wav');
         this.load.image('BG', 'assets/BalloonPatrolScreen.png');
 
+        // load music - I composed this myself
+        this.load.audio('Music', 'assets/RocketPatrolModMusic.wav');
+
         this.load.image('Easy', 'assets/EasyButton.png');
         this.load.image('Hard', 'assets/HardButton.png');
         this.load.image('Instr', 'assets/InstructionsButton.png');
@@ -16,6 +19,14 @@ class Menu extends Phaser.Scene {
 
     create() {
         this.add.image(320, 240, 'BG');
+
+        let music;
+        if (!musicPlaying) {
+            music = this.sound.add('Music');
+            music.setLoop(true);
+            music.play();
+            musicPlaying = true;
+        }
 
         let e = this.add.image(500, 135, 'Easy');
         let h = this.add.image(500, 235, 'Hard');

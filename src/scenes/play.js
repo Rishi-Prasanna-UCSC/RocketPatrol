@@ -10,11 +10,14 @@ class Play extends Phaser.Scene {
         this.load.image('bluesky', 'assets/bluesky.png');
         // load spritesheet
         this.load.image('pop', 'assets/balloondam.png');
+
     }
 
     create() {
         // place tile sprite
         this.bluesky = this.add.tileSprite(0, 0, 640, 480, 'bluesky').setOrigin(0, 0);
+
+
 
         // add rocket (p1)
         this.p1Rocket = new Rocket(this, game.config.width/2, game.config.height - borderUISize - borderPadding, 'rocket').setOrigin(0.5, 0);
@@ -48,7 +51,7 @@ class Play extends Phaser.Scene {
             align: 'left',
             padding: {
                 top: 2,
-                bottom: 2,
+                bottom: 2
             }
         }
 
